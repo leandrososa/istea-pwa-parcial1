@@ -1,0 +1,18 @@
+{
+    "short_name": "Reelgram",
+    "name": "Galeria de fotos Reelgram",
+    "icons": [
+        {
+            "src": "/img/reelgram-icon.png",
+            "type": "image/png",
+            "size": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "scope": "/",
+    "id":"/",
+    "background_color": "red",
+    "display": "standalone",
+    "theme_color": "#4a4a4a",
+    "description": "Sube tus fotos a la API de Reelgram!"
+}
