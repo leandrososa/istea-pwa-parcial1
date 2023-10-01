@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reelgram</title>
+    <title>Galería - Reelgram</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="stylesheet" href="css/bulma.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" type="image/png" href="/img/reelgram-icon-64px.png" />
   </head>
 
@@ -23,8 +24,23 @@
       </div>
     </nav>
     <!-- Content -->
-    <div id="current-gallery" class="mt-5 container is-fluid">
-      <p class="is-centered">Cargando...</p>
+    <div id="current-gallery" class="container is-fluid main-content">
+      <div class="loading-spinner"></div>
+      <div id="static-card" class="card mb-5 is-hidden">
+        <header class="card-header">
+          <p class="card-header-title">Card estática</p>
+        </header>
+        <div class="card-image">
+          <figure class="image">
+            <img src="img/photo-placeholder.png" alt="Imagen" />
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="content">
+            <p>24/09/23, 16:08:47</p>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Bottom bar -->
     <nav class="navbar is-light is-fixed-bottom">
@@ -39,6 +55,7 @@
         </div>
       </div>
     </nav>
+    <script src="js/common.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>

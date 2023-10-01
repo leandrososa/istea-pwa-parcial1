@@ -3,13 +3,23 @@ const endpoint = new URL(
 )
 endpoint.searchParams.append("sortBy", "fecha")
 endpoint.searchParams.append("order", "desc")
+
+const staticCard = document.querySelector("#static-card")
 const currentGalleryElement = document.querySelector("#current-gallery")
 const cameraBtn = document.querySelector("#camera-btn")
-let camera
+const loadingSpinner = document.querySelector(".loading-spinner")
 
 fetch(endpoint)
   .then((response) => response.json())
-  .then((json) => (currentGalleryElement.innerHTML = renderGallery(json)))
+  .then((json) => {
+    if (json.length > 0) {
+      currentGalleryElement.innerHTML = renderGallery(json)
+    } else {
+      loadingSpinner.remove()
+      staticCard.classList.remove("is-hidden")
+      // showNotification("No hay elementos a mostrar", "warning", staticCard)
+    }
+  })
 
 /**
  * Retorna el codigo HTML de una card de imagen
