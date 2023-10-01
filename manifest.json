@@ -5,29 +5,33 @@
     {
       "src": "/img/reelgram-icon-512px.png",
       "type": "image/png",
-      "size": "512x512"
+      "sizes": "512x512",
+      "purpose": "any"
     },
     {
       "src": "/img/reelgram-icon-192px.png",
       "type": "image/png",
-      "size": "192x192"
+      "sizes": "192x192",
+      "purpose": "any"
     },
     {
       "src": "/img/reelgram-icon-144px.png",
       "type": "image/png",
-      "size": "144x144"
+      "sizes": "144x144",
+      "purpose": "any"
     },
     {
       "src": "/img/reelgram-icon-64px.png",
       "type": "image/png",
-      "size": "64x64"
+      "sizes": "64x64",
+      "purpose": "any"
     }
   ],
   "start_url": "/",
   "scope": "/",
-  "background_color": "red",
+  "background_color": "#fff",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#4a4a4a",
+  "theme_color": "#f5f5f5",
   "description": "Sube tus fotos a la API de Reelgram!"
 }
