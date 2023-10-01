@@ -1,18 +1,33 @@
 {
-    "short_name": "Reelgram",
-    "name": "Galeria de fotos Reelgram",
-    "icons": [
-        {
-            "src": "/img/reelgram-icon.png",
-            "type": "image/png",
-            "size": "512x512"
-        }
-    ],
-    "start_url": "/",
-    "scope": "/",
-    "id":"/",
-    "background_color": "red",
-    "display": "standalone",
-    "theme_color": "#4a4a4a",
-    "description": "Sube tus fotos a la API de Reelgram!"
+  "short_name": "Reelgram",
+  "name": "Galeria de fotos Reelgram",
+  "icons": [
+    {
+      "src": "/img/reelgram-icon-512px.png",
+      "type": "image/png",
+      "size": "512x512"
+    },
+    {
+      "src": "/img/reelgram-icon-192px.png",
+      "type": "image/png",
+      "size": "192x192"
+    },
+    {
+      "src": "/img/reelgram-icon-144px.png",
+      "type": "image/png",
+      "size": "144x144"
+    },
+    {
+      "src": "/img/reelgram-icon-64px.png",
+      "type": "image/png",
+      "size": "64x64"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "red",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#4a4a4a",
+  "description": "Sube tus fotos a la API de Reelgram!"
 }
