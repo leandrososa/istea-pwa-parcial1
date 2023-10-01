@@ -1,4 +1,8 @@
-const endpoint = "https://6508d64056db83a34d9cb726.mockapi.io/reelgram-galeria"
+const endpoint = new URL(
+  "https://6508d64056db83a34d9cb726.mockapi.io/reelgram-galeria",
+)
+endpoint.searchParams.append("sortBy", "fecha")
+endpoint.searchParams.append("order", "desc")
 const currentGalleryElement = document.querySelector("#current-gallery")
 const cameraBtn = document.querySelector("#camera-btn")
 let camera
