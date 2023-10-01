@@ -16,14 +16,14 @@ fetch(endpoint)
  * @returns {string} HTML del card
  */
 const renderPicture = (id, image, title, date) => `
-    <div class="card" data-image-id="${id}">
+    <div class="card mb-5" data-image-id="${id}">
         <header class="card-header">
             <p class="card-header-title">
                 ${title}
             </p>
         </header>
         <div class="card-image">
-            <figure class="image is-4by3">
+            <figure class="image">
                 <img src="${image}" alt="${title}">
             </figure>
         </div>
@@ -50,24 +50,4 @@ const renderGallery = (json) => {
     )
   })
   return html
-}
-
-/**
- * Inicia la camara y posteriormente guarda el blob en localstorage
- */
-const triggerCamera = () => {
-  /* camera = document.createElement("input")
-  camera.type = "file"
-  camera.accept = "image/*"
-  camera.capture = "environment"
-  camera.click()
-
-  camera.addEventListener("change", (evt) => {
-    const selectedFile = evt.target.files[0]
-    if (selectedFile) {
-      const blob = URL.createObjectURL(selectedFile)
-      localStorage.setItem("imageBlob", blob)
-      console.log(blob)
-    }
-  }) */
 }

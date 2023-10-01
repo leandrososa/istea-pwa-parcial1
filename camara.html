@@ -1,28 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reelgram</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/bulma.min.css">
-</head>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="css/bulma.min.css" />
+    <style>
+      .picture {
+        object-fit: contain;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
     <!-- Top Bar -->
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand is-centered">
-            <a class="navbar-item navbar-" href="#">
-                Reelgram
-            </a>
-        </div>
+      <div class="navbar-brand is-centered">
+        <a class="navbar-item navbar-" href="/"> Reelgram </a>
+      </div>
     </nav>
     <!-- Content -->
-    <div id="current-gallery" class="mt-5 container is-fluid">
-        <img id="picture" src="img/photo-placeholder.png" alt="picture"/>
+    <div class="mt-5 container is-fluid">
+      <!-- Image -->
+      <div class="columns is-vcentered">
+        <div class="column">
+          <figure class="">
+            <img
+              class="picture image"
+              id="picture"
+              src="img/photo-placeholder.png"
+              alt="Image"
+            />
+            <figcaption class="mt-5">
+              Haga double-tap o doble clic en la imagen para iniciar la cámara.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Input for Title -->
+      <div class="columns is-vcentered">
+        <div class="column is-two-thirds">
+          <div class="field">
+            <label class="label">T&iacute;tulo</label>
+            <div class="control">
+              <input
+                id="title"
+                class="input"
+                type="text"
+                placeholder="T&iacute;tulo para la imagen"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons (Cancel and Publish) -->
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field is-grouped">
+            <div class="control is-expanded">
+              <button id="cancel-btn" class="button is-danger is-fullwidth">
+                Cancelar
+              </button>
+            </div>
+            <div class="control is-expanded">
+              <button
+                id="publish-btn"
+                class="button is-primary is-fullwidth"
+                disabled
+              >
+                Publicar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="js/camara.js"></script>
-</body>
-
+  </body>
 </html>
