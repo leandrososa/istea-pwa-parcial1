@@ -89,32 +89,6 @@ function hideLoadingOverlay() {
   loadingOverlay.style.display = "none"
 }
 
-/**
- * Mostrar mensaje de notificacion en el tope de pagina
- * @param {string} msg Mensaje a mostrar en la notificacion
- * @param {string} color Clase de color de Bulma
- */
-const showNotification = (msg, color) => {
-  clearNotification()
-  imgContainer.insertAdjacentHTML(
-    "beforebegin",
-    `
-    <div id="current-notif" class="notification is-${color}">
-      <button class="delete"></button>
-      ${msg}
-    </div>
-  `,
-  )
-}
-
-/**
- * Limpiar notificacion si existe
- */
-const clearNotification = () => {
-  const notif = document.querySelector("#current-notif")
-  if (notif) notif.remove()
-}
-
 const submitPicToGallery = () => {
   showLoadingOverlay()
   const newPic = {
@@ -136,6 +110,7 @@ const submitPicToGallery = () => {
         showNotification(
           "Lo sentimos, la imagen no pudo ser publicada.",
           "danger",
+          imgContainer,
         )
         throw new Error("No se pudo crear el recurso.")
       }
@@ -145,6 +120,7 @@ const submitPicToGallery = () => {
       showNotification(
         "La foto se agregó a la galería con éxito. <a href='/' >Volver a la home</a>",
         "primary",
+        imgContainer,
       )
       console.log("Foto agregada con éxito: " + datos)
     })
@@ -153,6 +129,7 @@ const submitPicToGallery = () => {
       showNotification(
         "Lo sentimos, la imagen no pudo ser publicada.",
         "danger",
+        imgContainer,
       )
       console.log(error)
     })
