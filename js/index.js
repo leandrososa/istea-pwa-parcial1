@@ -30,7 +30,7 @@ fetch(endpoint)
  * @returns {string} HTML del card
  */
 const renderPicture = (id, image, title, date) => `
-    <div class="card mb-5" data-image-id="${id}">
+    <div class="card m-5" data-image-id="${id}">
         <header class="card-header">
             <p class="card-header-title">
                 ${title}
