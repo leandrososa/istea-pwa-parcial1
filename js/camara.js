@@ -3,6 +3,7 @@ const camara = document.createElement("input")
 const picture = document.querySelector("#picture")
 const publishBtn = document.querySelector("#publish-btn")
 const title = document.querySelector("#title")
+const imgContainer = document.querySelector("#image-container")
 let hasPicture = false // Controlamos si se cargó la foto
 
 /**
@@ -52,15 +53,14 @@ const getImageCode = () => {
   canvas.width = picture.width
   canvas.height = picture.height
   ctx.drawImage(picture, 0, 0, picture.width, picture.height)
-  // document.querySelector("body").appendChild(canvas)
-  return canvas.toDataURL("image/png") //formato base64
+  return canvas.toDataURL("image/webp") //formato base64
 }
 
 /**
  * Obtiene la fecha hora actual en el formato solicitado
  * @returns {string} Fecha formateada
  */
-function getFormattedDate() {
+const getFormattedDate = () => {
   const now = new Date()
   const year = now.getFullYear().toString().slice(-2) // 2 digitos del año
   const month = (now.getMonth() + 1).toString().padStart(2, "0") // 2 digitos del mes
@@ -73,7 +73,50 @@ function getFormattedDate() {
   return formattedTime
 }
 
+/**
+ * Mostrar overlay de carga
+ */
+function showLoadingOverlay() {
+  const loadingOverlay = document.getElementById("loadingOverlay")
+  loadingOverlay.style.display = "block"
+}
+
+/**
+ * Ocultar overlay de carga
+ */
+function hideLoadingOverlay() {
+  const loadingOverlay = document.getElementById("loadingOverlay")
+  loadingOverlay.style.display = "none"
+}
+
+/**
+ * Mostrar mensaje de notificacion en el tope de pagina
+ * @param {string} msg Mensaje a mostrar en la notificacion
+ * @param {string} color Clase de color de Bulma
+ */
+const showNotification = (msg, color) => {
+  clearNotification()
+  imgContainer.insertAdjacentHTML(
+    "beforebegin",
+    `
+    <div id="current-notif" class="notification is-${color}">
+      <button class="delete"></button>
+      ${msg}
+    </div>
+  `,
+  )
+}
+
+/**
+ * Limpiar notificacion si existe
+ */
+const clearNotification = () => {
+  const notif = document.querySelector("#current-notif")
+  if (notif) notif.remove()
+}
+
 const submitPicToGallery = () => {
+  showLoadingOverlay()
   const newPic = {
     imagen: getImageCode(),
     titulo: title.value,
@@ -89,17 +132,29 @@ const submitPicToGallery = () => {
       if (response.ok) {
         return response.json()
       } else {
+        hideLoadingOverlay()
+        showNotification(
+          "Lo sentimos, la imagen no pudo ser publicada.",
+          "danger",
+        )
         throw new Error("No se pudo crear el recurso.")
       }
     })
     .then((datos) => {
-      //inputId.value = datos.id
-      console.log("Producto agregado con éxito")
-      //notificarOperacion("El producto fue agregado con éxito.", "noti-ok")
+      hideLoadingOverlay()
+      showNotification(
+        "La foto se agregó a la galería con éxito. <a href='/' >Volver a la home</a>",
+        "primary",
+      )
+      console.log("Foto agregada con éxito: " + datos)
     })
-    .catch(
-      (error) => console.log(error),
-      //notificarOperacion("No se pudo crear el recurso", "noti-ko"),
-    )
+    .catch((error) => {
+      hideLoadingOverlay()
+      showNotification(
+        "Lo sentimos, la imagen no pudo ser publicada.",
+        "danger",
+      )
+      console.log(error)
+    })
 }
 publishBtn.addEventListener("click", submitPicToGallery)
